@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://model.exercise42ws.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://model.exercise42ws.com" xmlns:intf="http://model.exercise42ws.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.exercise42ws.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="CalculatTotal">
+    <complexType>
+     <sequence>
+      <element name="numberArticles" type="xsd:int"/>
+      <element name="priceArticles" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="CalculatTotalResponse">
+    <complexType>
+     <sequence>
+      <element name="CalculatTotalReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="CalculatTotalResponse">
+
+      <wsdl:part element="impl:CalculatTotalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="CalculatTotalRequest">
+
+      <wsdl:part element="impl:CalculatTotal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Invoice">
+
+      <wsdl:operation name="CalculatTotal">
+
+         <wsdl:input message="impl:CalculatTotalRequest" name="CalculatTotalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:CalculatTotalResponse" name="CalculatTotalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="InvoiceSoapBinding" type="impl:Invoice">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="CalculatTotal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="CalculatTotalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="CalculatTotalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="InvoiceService">
+
+      <wsdl:port binding="impl:InvoiceSoapBinding" name="Invoice">
+
+         <wsdlsoap:address location="http://tempuri.org/Exercise40CRUDAjax1/services/Invoice"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
